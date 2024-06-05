@@ -1,12 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { FlatList, StyleSheet, Text, View } from 'react-native';
+import { FlatList, StyleSheet, Text, View, Pressable } from 'react-native';
 import React from 'react';
+import { Link } from 'expo-router';
 
-const Box = ({ value }: any) => {
+type BoxItem = {
+    value: number;
+}
+const Box = ({ value }: BoxItem) => {
     return (
-        <View style={styles.box}>
-            <Text style={styles.text}>{value}</Text>
-        </View>
+        <Link href={`/day${value}`} asChild>
+            <Pressable style={styles.box}>
+                <Text style={styles.text}>{value}</Text>
+            </Pressable>
+        </Link>
     )
 }
 
